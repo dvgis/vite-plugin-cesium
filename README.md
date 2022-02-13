@@ -1,2 +1,2 @@
 # vite-plugin-cesium
-Vite plugin for DC-SDK
+Vite plugin for Cesium
