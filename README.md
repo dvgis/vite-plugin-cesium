@@ -20,7 +20,7 @@ export default defineConfig({
 });
 ```
 
-###Options
+##Options
 
  **_libsPath_**
 
