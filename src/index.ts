@@ -8,13 +8,13 @@ import fs from "fs-extra";
 import serveStatic from "serve-static";
 import { HtmlTagDescriptor, normalizePath, Plugin } from "vite";
 
-interface VitePluginDcOptions {
+interface VitePluginCesiumOptions {
   libsPath?: String;
   useUnminified?: Boolean;
 }
 
 function vitePluginCesium(
-  options: VitePluginDcOptions = { libsPath: "libs", useUnminified: true }
+  options: VitePluginCesiumOptions = { libsPath: "libs", useUnminified: true }
 ): Plugin {
   const cesiumBuildPath = "./node_modules/cesium/Build";
   let base = "/";
