@@ -14,12 +14,15 @@ interface VitePluginCesiumOptions {
 }
 
 function vitePluginCesium(
-  options: VitePluginCesiumOptions = { libsPath: "libs", useUnminified: true }
+  options: VitePluginCesiumOptions = { libsPath: "libs", useUnminified: false }
 ): Plugin {
   const cesiumBuildPath = "./node_modules/cesium/Build";
   let base = "/";
   let outDir = "dist";
   let isBuild = false;
+  let libsPath = options.libsPath || "libs";
+  let useUnminified = options.useUnminified || false;
+
   return {
     name: "vite-plugin-cesium",
     config(config, { command }) {
@@ -29,12 +32,12 @@ function vitePluginCesium(
     },
     configureServer({ middlewares }) {
       middlewares.use(
-        `/${options.libsPath}/Cesium`,
+        `/${libsPath}/Cesium`,
         serveStatic(
           normalizePath(
             path.join(
               cesiumBuildPath,
-              options.useUnminified ? 'CesiumUnminified' : 'Cesium'
+              useUnminified ? "CesiumUnminified" : "Cesium"
             )
           )
         )
@@ -45,23 +48,23 @@ function vitePluginCesium(
         try {
           fs.copySync(
             path.join(cesiumBuildPath, "Cesium", "Assets"),
-            path.join(outDir, String(options.libsPath), "Cesium", "Assets")
+            path.join(outDir, String(libsPath), "Cesium", "Assets")
           );
           fs.copySync(
             path.join(cesiumBuildPath, "Cesium", "ThirdParty"),
-            path.join(outDir, String(options.libsPath), "Cesium", "ThirdParty")
+            path.join(outDir, String(libsPath), "Cesium", "ThirdParty")
           );
           fs.copySync(
             path.join(cesiumBuildPath, "Cesium", "Widgets"),
-            path.join(outDir, String(options.libsPath), "Cesium", "Widgets")
+            path.join(outDir, String(libsPath), "Cesium", "Widgets")
           );
           fs.copySync(
             path.join(cesiumBuildPath, "Cesium", "Workers"),
-            path.join(outDir, String(options.libsPath), "Cesium", "Workers")
+            path.join(outDir, String(libsPath), "Cesium", "Workers")
           );
           fs.copySync(
             path.join(cesiumBuildPath, "Cesium", "Cesium.js"),
-            path.join(outDir, String(options.libsPath), "Cesium", "Cesium.js")
+            path.join(outDir, String(libsPath), "Cesium", "Cesium.js")
           );
         } catch (e) {}
       }
@@ -72,7 +75,9 @@ function vitePluginCesium(
       tags.push({
         tag: "script",
         attrs: {
-          src: normalizePath(path.join(base, String(options.libsPath), "Cesium", "Cesium.js")),
+          src: normalizePath(
+            path.join(base, String(libsPath), "Cesium", "Cesium.js")
+          ),
         },
         injectTo: "head",
       });
@@ -82,7 +87,12 @@ function vitePluginCesium(
         attrs: {
           rel: "stylesheet",
           href: normalizePath(
-            path.join(base, String(options.libsPath), "Cesium", "Widgets/widgets.css")
+            path.join(
+              base,
+              String(libsPath),
+              "Cesium",
+              "Widgets/widgets.css"
+            )
           ),
         },
         injectTo: "head",

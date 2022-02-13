@@ -34,7 +34,7 @@ export default defineConfig({
  Whether to use the unminified files in development mode
 
  - **type** : Boolean
- - **default**: true
+ - **default**: false
 
 ## Copyright
 
