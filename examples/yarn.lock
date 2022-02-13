@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.17.0.tgz#f0ac33eddbe214e4105363bb17c3341c5ffcc43c"
   integrity sha512-VKXSCQx5D8S04ej+Dqsr1CzYvvWgf20jIw2D+YhQCrIlr2UZGaDds23Y0xg75/skOxpLCRpUZvk/1EAVkGoDOw==
 
-"@dvgis/vite-plugin-cesium@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@dvgis/vite-plugin-cesium/-/vite-plugin-cesium-1.0.0.tgz#467de30d3f7f5f7feefa1b2f964add053b859c33"
-  integrity sha512-EUa3ENRG59pIGOOyL9wNwwACkFhQFqceBVtJqRVDEtIJl3hCkuZKN4n7H4yG9ayk6Z1/MDWyXaCR3U1ydytf3A==
+"@dvgis/vite-plugin-cesium@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@dvgis/vite-plugin-cesium/-/vite-plugin-cesium-1.0.2.tgz#aa843da352982c897fa8659afa3e2675a49d5c12"
+  integrity sha512-NHsEtxpVfbx/fgGWut1XUqCrExlx7HnR0zC+MwdNPKGAKiUIV83gD5gzULIDkzSEql7NteWwz3bDDjkXC4Tt5w==
   dependencies:
     fs-extra "^9.1.0"
     serve-static "^1.14.1"
